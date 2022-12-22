@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Gwordle
+
+This is the UI component of a Wordle clone I am making for practice.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
