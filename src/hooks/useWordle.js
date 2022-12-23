@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {allowedSet} from '../resources/allowed'
 
 const useWordle = (solution) => {
     const [turn, setTurn] = useState(0) // tracks number of guesses
@@ -100,14 +101,19 @@ const useWordle = (solution) => {
                 console.log('Word must be 5 chars long');
                 return
             }
+
+            if(!allowedSet.has(currentGuess)){
+                console.warn('Guess must be a real word!')
+                return
+            }
            
             // If guess is valid, format guess
             const formatted = formatGuess()
             addNewGuess(formatted)
         }
 
-        if (/^[A-Za-z]$/.test(key) && currentGuess.length < 5) {
-            setCurrentGuess(currentGuess + key)
+        if (/^[A-Za-z]$/.test(key) && currentGuess.length < 5 && usedKeys[key.toLowerCase()] !== 'grey') {
+            setCurrentGuess(currentGuess + key.toLowerCase())
         }
 
     }

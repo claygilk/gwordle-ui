@@ -2,6 +2,8 @@
 
 This is the UI component of a Wordle clone I am making for practice.
 
+podman run -it --rm -p 3001:80 -v .\data\db.json:/data/db.json docker.io/clue/json-server
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
