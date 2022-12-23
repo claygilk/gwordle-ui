@@ -1,6 +1,6 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
-export default function Modal({ isCorrect, turn, solution, resetGame, setShowModal, getNewSolution}) {
+export default function Modal({ isCorrect, turn, solution, resetGame, setShowModal, getNewSolution }) {
 
     return (
         <div className='modal'>
@@ -10,10 +10,13 @@ export default function Modal({ isCorrect, turn, solution, resetGame, setShowMod
                     <p className='solution'>The Solution Was: {solution}</p>
                     <p >You found the solution in {turn} guesses</p>
                     <button onClick={() => {
+                        console.log('resetGame()')
                         resetGame()
+                        console.log('setShowModal()')
                         setShowModal(false)
+                        console.log('getNewSolution()')
                         getNewSolution('hi there')
-                        }}>Retry</button>
+                    }}>Retry</button>
                 </div>
             )}
 
@@ -23,10 +26,13 @@ export default function Modal({ isCorrect, turn, solution, resetGame, setShowMod
                     <p className='solution'>The Solution Was: {solution}</p>
                     <p >Better luck next time...</p>
                     <button onClick={() => {
+                        console.log('resetGame()')
                         resetGame()
+                        console.log('setShowModal()')
                         setShowModal(false)
+                        console.log('getNewSolution()')
                         getNewSolution('hi there')
-                        }}>Retry</button>
+                    }}>Retry</button>
                 </div>
             )}
         </div>

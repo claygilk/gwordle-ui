@@ -8,6 +8,7 @@ const useWordle = (solution) => {
     const [history, setHistory] = useState([]) // each guess is a string
     const [isCorrect, setIsCorrect] = useState(false)
     const [usedKeys, setUsedKeys] = useState({}) // {a: 'green', b: 'yellow', c: 'grey' ...}
+    const [streak, setStreak] = useState(0)
 
     // format a guess
     const formatGuess = () => {
@@ -40,6 +41,7 @@ const useWordle = (solution) => {
         
         if (currentGuess === solution) {
             setIsCorrect(true)
+            setStreak(prev => prev + 1)
         }
         
         setGuesses((prev) => {
@@ -102,10 +104,10 @@ const useWordle = (solution) => {
                 return
             }
 
-            if(!allowedSet.has(currentGuess)){
-                console.warn('Guess must be a real word!')
-                return
-            }
+            // if(!allowedSet.has(currentGuess)){
+            //     console.log('Guess must be a real word!')
+            //     return
+            // }
            
             // If guess is valid, format guess
             const formatted = formatGuess()
@@ -120,6 +122,7 @@ const useWordle = (solution) => {
 
     const resetGame = () => {
         console.log("Resetting game...")
+
         setHistory([])
         setIsCorrect(false)
         setUsedKeys({})
@@ -128,7 +131,7 @@ const useWordle = (solution) => {
  
     }
 
-    return {turn, currentGuess, guesses, isCorrect, handleKeyUp, usedKeys, resetGame}
+    return {turn, currentGuess, guesses, isCorrect, handleKeyUp, usedKeys, resetGame, streak}
 }
 
 export default useWordle
