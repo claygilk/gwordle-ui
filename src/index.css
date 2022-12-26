@@ -13,12 +13,41 @@ h1 {
   color: #333;
 }
 
+.container {
+  display: flex;
+}
+
+ul {
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+.nav-link {
+  color:#333;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+a:visited {
+  color: #333
+}
+
+/* auto-applied to <NavLink> */
+a.active {
+  color:#5ac85a; 
+}
+
 /* ROWS */
 .row {
   text-align: center;
   display: flex;
   justify-content: center;
 }
+
+
 
 .row>div {
   display: block;

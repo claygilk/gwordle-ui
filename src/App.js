@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
-import {callSolutionService} from "./services/solutionService";
+import { callSolutionService } from "./services/solutionService";
+import { Link, Navigate, NavLink, Route, Routes } from "react-router-dom"
+import UserScores from "./components/UserScores";
+import About from "./components/About";
+import Leaderboard from "./components/Leaderboard";
+import NotFound from "./components/NotFound";
 
 
 function App() {
@@ -20,11 +25,36 @@ function App() {
     })
   }, [setSolution])
 
+  // const activeNavLink = ({isActive}) => {
+  //   return isActive ? {color: "red"} : {}
+  // }
+//   style={activeNavLink}
+// style={activeNavLink}
+// style={activeNavLink}
+
   return (
-    <div className="App">
-      <h1>Gwordle</h1>
-      {solution && <Wordle solution={solution} getNewSolution={getNewSolution} />}
-    </div>
+    <>
+      <nav>
+        <ul className="container">
+          <li className="nav-link"><NavLink  to="/">Home</NavLink></li>
+          <li className="nav-link"><NavLink  to="/about">About</NavLink></li>
+          <li className="nav-link"><NavLink  to="/leaderboard">Leaderboard</NavLink></li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={
+          <div className="App">
+            <h1>Gwordle</h1>
+            {solution && <Wordle solution={solution} getNewSolution={getNewSolution} />}
+          </div>
+        } />
+        <Route path="/about" element={<About/>} />
+        <Route path="/leaderboard" element={<Leaderboard/>} />
+        <Route path="/score/:id" element={<UserScores></UserScores>} />
+        <Route path="/*" element={<NotFound/>} />
+      </Routes>
+    </>
+
   )
 }
 
