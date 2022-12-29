@@ -6,7 +6,7 @@ import UserScores from "./components/UserScores";
 import About from "./components/About";
 import Leaderboard from "./components/Leaderboard";
 import NotFound from "./components/NotFound";
-
+import Error from "./components/Error";
 
 function App() {
   const [solution, setSolution] = useState(null)
@@ -34,6 +34,8 @@ function App() {
 
   return (
     <>
+    <div>Debug: {process.env.NODE_ENV}</div>
+    <div>Debug: {process.env.REACT_APP_API_URL}</div>
       <nav>
         <ul className="container">
           <li className="nav-link"><NavLink  to="/">Home</NavLink></li>
@@ -46,6 +48,7 @@ function App() {
           <div className="App">
             <h1>Gwordle</h1>
             {solution && <Wordle solution={solution} getNewSolution={getNewSolution} />}
+            {!solution && <Error />}
           </div>
         } />
         <Route path="/about" element={<About/>} />
